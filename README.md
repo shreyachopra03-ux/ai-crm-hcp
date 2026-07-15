@@ -46,41 +46,46 @@ Takes raw, unstructured interaction notes and uses the LLM to produce a clean, p
 
 ## Project Structure
 
+```
 ai-crm-hcp/
 ├── backend/
 │   ├── agent/
-│   │   ├── graph.py          # LangGraph agent graph definition
-│   │   ├── state.py          # AgentState TypedDict
-│   │   └── llm.py            # Groq LLM configuration
+│   │   ├── graph.py               # LangGraph agent graph definition
+│   │   ├── state.py               # AgentState TypedDict
+│   │   └── llm.py                 # Groq LLM configuration
 │   ├── tools/
-│   │   ├── log_interaction.py
-│   │   ├── edit_interaction.py
-│   │   ├── search_hcp.py
-│   │   ├── suggest_followups.py
-│   │   └── summarize_notes.py
+│   │   ├── log_interaction.py     # Tool 1 — log new HCP interaction
+│   │   ├── edit_interaction.py    # Tool 2 — edit existing interaction
+│   │   ├── search_hcp.py          # Tool 3 — search interactions by query
+│   │   ├── suggest_followups.py   # Tool 4 — AI follow-up suggestions
+│   │   └── summarize_notes.py     # Tool 5 — summarize raw notes
 │   ├── routers/
-│   │   ├── chat.py           # /chat endpoint + form-data extraction
-│   │   └── interactions.py   # CRUD endpoints
-│   ├── main.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── database.py
+│   │   ├── chat.py                # /chat endpoint + form-data extraction
+│   │   └── interactions.py        # CRUD endpoints
+│   ├── main.py                    # FastAPI app entry point
+│   ├── models.py                  # SQLAlchemy ORM models
+│   ├── schemas.py                 # Pydantic request/response schemas
+│   ├── database.py                # Database connection setup
 │   ├── requirements.txt
 │   └── .env.example
 └── frontend/
     ├── src/
     │   ├── components/
     │   │   ├── ChatAssistant.tsx       # AI chat panel
-    │   │   ├── LogInteractionForm.tsx  # Form with auto-fill
-    │   │   ├── SentimentSelector.tsx
-    │   │   └── FollowUpSuggestions.tsx
+    │   │   ├── LogInteractionForm.tsx  # Form with AI auto-fill
+    │   │   ├── SentimentSelector.tsx   # Sentiment tag selector
+    │   │   └── FollowUpSuggestions.tsx # Follow-up display component
     │   ├── store/
-    │   │   ├── store.ts
-    │   │   ├── chatSlice.ts
-    │   │   └── interactionsSlice.ts
-    │   └── api/client.ts
+    │   │   ├── store.ts               # Redux store setup
+    │   │   ├── chatSlice.ts           # Chat state management
+    │   │   └── interactionsSlice.ts   # Interactions state management
+    │   ├── api/
+    │   │   └── client.ts              # Axios API client
+    │   ├── App.tsx                    # Main app component
+    │   └── main.tsx                   # React entry point
     ├── index.html
     └── package.json
+```
 
 
 ## Setup & Running
