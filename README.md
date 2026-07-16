@@ -167,3 +167,5 @@ The AI assistant understands natural language. Examples:
 | `PUT` | `/interactions/{id}` | Update interaction |
 | `DELETE` | `/interactions/{id}` | Delete interaction |
 | `GET` | `/interactions/hcp/{name}` | Get by HCP name |
+
+
